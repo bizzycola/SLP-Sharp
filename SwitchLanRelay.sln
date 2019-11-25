@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29311.281
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchLanRelay", "SwitchLanRelay\SwitchLanRelay.csproj", "{89A9AD80-16F4-4E9E-A4A5-FB24D430F697}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchLanNet", "SwitchLanNet\SwitchLanNet.csproj", "{4F95F9B3-5D83-4811-BE98-33AC74663489}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89A9AD80-16F4-4E9E-A4A5-FB24D430F697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A9AD80-16F4-4E9E-A4A5-FB24D430F697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A9AD80-16F4-4E9E-A4A5-FB24D430F697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A9AD80-16F4-4E9E-A4A5-FB24D430F697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F95F9B3-5D83-4811-BE98-33AC74663489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F95F9B3-5D83-4811-BE98-33AC74663489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F95F9B3-5D83-4811-BE98-33AC74663489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F95F9B3-5D83-4811-BE98-33AC74663489}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15317486-ACF2-4627-9548-4983037EBEBA}
+	EndGlobalSection
+EndGlobal

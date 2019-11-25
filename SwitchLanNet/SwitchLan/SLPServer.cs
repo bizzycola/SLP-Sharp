@@ -83,8 +83,6 @@ namespace SwitchLanNet
                     if (data.Buffer.Length <= 0)
                         continue;
 
-                    //Console.WriteLine($"Data recieved: {data.Buffer.Length}");
-                    
                     // Update the download amount
                     TestData.Download += data.Buffer.Length;
 
@@ -92,7 +90,7 @@ namespace SwitchLanNet
                     var packetType = (ForwarderType)data.Buffer[0];
 
                     // If the packet is not a ping, update(or create) the timeout info on the client
-                    if(packetType != ForwarderType.Ping)
+                    if (packetType != ForwarderType.Ping)
                     {
                         var cstr = Utils.AddressToString(data.RemoteEndPoint);
                         if (_clients.ContainsKey(cstr))
@@ -107,7 +105,7 @@ namespace SwitchLanNet
                         }
                     }
 
-                    OnPacket(data.RemoteEndPoint, packetType, data.Buffer.Take(1).ToArray(), data.Buffer);
+                    OnPacket(data.RemoteEndPoint, packetType, data.Buffer.Skip(1).ToArray(), data.Buffer);
                 }
                 catch(Exception ex) 
                 {
@@ -140,13 +138,17 @@ namespace SwitchLanNet
                 case ForwarderType.Ipv4Frag:
                     OnIp4vFrag(ip, payload, msg);
                     break;
+
+                default:
+                    Console.WriteLine("Unknown packet type");
+                    break;
             }
         }
 
         #region Packet Handler Methods
         void OnIp4vFrag(IPEndPoint fromAddr, byte[] payload, byte[] msg)
         {
-            if (payload.Length < 20) return;
+            if (payload.Length <= 20) return;
 
             var src = BitConverter.ToInt32(payload, 0);
             var dst = BitConverter.ToInt32(payload, 4);
@@ -168,7 +170,7 @@ namespace SwitchLanNet
 
         void OnIp4v(IPEndPoint fromAddr, byte[] payload, byte[] msg)
         {
-            if (payload.Length < 20) return;
+            if (payload.Length <= 20) return;
 
             var src = BitConverter.ToInt32(payload, IPV4_OFF_SRC);
             var dst = BitConverter.ToInt32(payload, IPV4_OFF_DST);
@@ -197,9 +199,12 @@ namespace SwitchLanNet
             {
                 TestData.Upload += data.Length;
                 _server.Send(data, data.Length, addr);
+
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+
                 if (ex is SocketException)
                     _clients.Remove(Utils.AddressToString(addr));
             }
@@ -217,6 +222,7 @@ namespace SwitchLanNet
 
             foreach (var client in clientsExcept)
                 SendTo(client.Value.RInfo, data);
+
         }
 
         /// <summary>

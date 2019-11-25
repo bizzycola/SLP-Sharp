@@ -6,9 +6,9 @@ namespace SwitchLanNet.Enums
 {
     internal enum ForwarderType
     {
-        Keepalive,
-        Ipv4,
-        Ping,
-        Ipv4Frag
+        Keepalive = 0,
+        Ipv4 = 1,
+        Ping = 2,
+        Ipv4Frag = 3
     }
 }

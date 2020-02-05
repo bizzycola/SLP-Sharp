@@ -24,3 +24,19 @@ dotnet run SwitchLanNet.dll -p 2150
 At the moment, only a client count and bytes/s current upload/download rate are provided by the API, returned as JSON.
 
 To call the API, simply `GET http://ip:port/`
+
+## Building
+Download .net core 2.2 for your desired platform here: https://dotnet.microsoft.com/download/dotnet-core/2.2
+
+### Visual Studio 2019
+Install Visual Studio 2019, the community edition is fine.
+Clone this repo and open the .sln file in Visual Studio, wait for it to restore the packages and it should build and run fine.
+
+### Command Line
+If you're developing with VS Code or another IDE, or setting the project up on a linux server, etc, you can build and run the project via the command line.
+
+Clone the repo, cd into the project folder(SwitchLanNet, with the .csproj file) and run `dotnet restore` to restore the packages then you can run the project with `dotnet run .`
+
+You can build the project with `dotnet build`. If you want to build it as release, run `dotnet build --configuration Release`.
+
+You can publish the project to create a release you can distribute and run on any platform(`dotnet SwitchLanNet.dll`) with `dotnet publish`. 

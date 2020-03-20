@@ -13,13 +13,15 @@ branches:
 services:
   - docker
 
-after_script:
-  - docker images
-before_deploy:
+before_script:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+
+script:
+  - docker build -t igromanru/switch-lan-party-server:latest .
+
 deploy:
   provider: script
-  script: docker build -t igromanru/switch-lan-party-server:latest . && docker push igromanru/switch-lan-party-server
+  script: docker push igromanru/switch-lan-party-server
   skip_cleanup: true
   on:
     branch: master

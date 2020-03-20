@@ -17,11 +17,11 @@ before_script:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 
 script:
-  - docker build -t igromanru/switch-lan-party-server:latest .
+  - docker build -t igromanru/switch-lan-play-dotnet:latest .
 
 deploy:
   provider: script
-  script: docker push igromanru/switch-lan-party-server
+  script: docker push igromanru/switch-lan-play-dotnet
   skip_cleanup: true
   on:
     branch: master
